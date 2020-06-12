@@ -1,5 +1,5 @@
 on: push
-name: Test, Build and Release apk
+name: Test apk
 jobs:
   build:
     name: Build APK
@@ -13,9 +13,9 @@ jobs:
       with:
         flutter-version: '1.17.3'
     - run: flutter pub get
-    - run: flutter build apk --debug --split-per-abi
-    - name: Create a Release APK
-      uses: ncipollo/release-action@v1
+    - run: flutter build apk --debug
+    - name: Upload math result for job 1
+      uses: actions/upload-artifact@v1
       with:
-        artifacts: "build/app/outputs/apk/debug/app-arm64-v8a-debug.apk"
-        token: ${{ secrets.TOKEN }}
+        name: 이름
+        path: ./build/app/outputs/apk/debug
